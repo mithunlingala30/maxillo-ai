@@ -1,8 +1,12 @@
 import os
+import sys
 import json
 import time
 import datetime
 import random
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 try:
     import requests
     REQUESTS_AVAILABLE = True
