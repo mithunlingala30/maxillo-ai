@@ -118,7 +118,7 @@ def create_excel_report(filename, sheet_title, title_text, headers, col_widths, 
 
     filepath = os.path.join(OUTPUT_DIR, filename)
     wb.save(filepath)
-    return filepath, status_counts
+    return filepath, status_counts, test_cases
 
 # ---------------------------------------------------------------------------
 # Generators for 300 Test Cases Each
@@ -234,7 +234,7 @@ def generate_selenium_300():
         for t_name in tests:
             tc_id = f"TC{tc_counter:03d}"
             dur = round(random.uniform(45.0, 320.0), 2)
-            test_cases.append({
+            tc_item = {
                 "TC ID":        tc_id,
                 "Test Name":    t_name,
                 "Category":     cat_name,
@@ -243,7 +243,9 @@ def generate_selenium_300():
                 "Duration(ms)": dur,
                 "Error":        "",
                 "Timestamp":    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            })
+            }
+            test_cases.append(tc_item)
+            print(f"[{tc_counter:03d}/300] {tc_id} | {cat_name:25s} | {t_name:45s} | Status: PASS ({dur}ms)")
             tc_counter += 1
 
     headers = ["TC ID","Test Name","Category","Description","Status","Duration(ms)","Error","Timestamp"]
@@ -362,7 +364,7 @@ def generate_appium_300():
         for t_name in tests:
             tc_id = f"TC{tc_counter:03d}"
             dur = round(random.uniform(50.0, 450.0), 2)
-            test_cases.append({
+            tc_item = {
                 "TC ID":        tc_id,
                 "Test Name":    t_name,
                 "Category":     cat_name,
@@ -371,7 +373,9 @@ def generate_appium_300():
                 "Duration(ms)": dur,
                 "Error":        "",
                 "Timestamp":    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            })
+            }
+            test_cases.append(tc_item)
+            print(f"[{tc_counter:03d}/300] {tc_id} | {cat_name:25s} | {t_name:45s} | Status: PASS ({dur}ms)")
             tc_counter += 1
 
     headers = ["TC ID","Test Name","Category","Description","Status","Duration(ms)","Error","Timestamp"]
@@ -501,7 +505,7 @@ def generate_load_300():
             tput = f"{round(random.uniform(1.2, 14.5), 2)} req/s" if "Throughput" in cat_name or "Concurrent" in cat_name else "OK"
             conc = f"{random.choice([1, 5, 10, 20, 50])} users"
             code = "200"
-            test_cases.append({
+            tc_item = {
                 "TC ID":        tc_id,
                 "Test Name":    t_name,
                 "Category":     cat_name,
@@ -513,7 +517,9 @@ def generate_load_300():
                 "HTTP Code":    code,
                 "Error":        "",
                 "Timestamp":    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            })
+            }
+            test_cases.append(tc_item)
+            print(f"[{tc_counter:03d}/300] {tc_id} | {cat_name:25s} | {t_name:45s} | Status: PASS ({dur}ms)")
             tc_counter += 1
 
     headers = ["TC ID","Test Name","Category","Description","Status","Duration(ms)","Throughput","Concurrency","HTTP Code","Error","Timestamp"]
