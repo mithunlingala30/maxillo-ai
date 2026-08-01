@@ -1,0 +1,53 @@
+name: maxilloai
+description: "MaxilloAI - AI-powered maxillofacial reconstruction soft tissue outcome prediction app."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Firebase (Authentication + Database + Storage)
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
+  firebase_storage: ^12.3.4
+  google_sign_in: ^6.2.1
+
+  # Networking - talks to the deployed Gemini AI prediction backend
+  http: ^1.2.2
+
+  # State management
+  provider: ^6.1.2
+
+  # UI
+  google_fonts: ^6.2.1
+  fl_chart: ^0.69.0
+
+  # Image handling
+  image_picker: ^1.1.2
+
+  # PDF report generation + viewing + sharing
+  pdf: ^3.11.1
+  printing: ^5.13.3
+  path_provider: ^2.1.4
+  share_plus: ^10.1.2
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.5.1
+  fluttertoast: ^8.2.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
